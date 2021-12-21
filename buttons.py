@@ -1,6 +1,21 @@
 from telebot import types
 import json
 
+import pandas as pd
+pd_10_1 = pd.read_csv('расписание_лицей.csv', ';', index_col=0)
+pd_10_i2 = pd.read_csv('10И2.csv', ';', index_col=0)
+pd_11_i1 = pd.read_csv('11и1.csv', ';', index_col=0)
+pd_11_i2 = pd.read_csv('11и2.csv', ';', index_col=0)
+pd_11_ec1 = pd.read_csv('11Э1.csv', ';', index_col=0)
+pd_11_ec2 = pd.read_csv('11Э2.csv', ';', index_col=0)
+pd_11_en1 = pd.read_csv('11Е1.csv', ';', index_col=0)
+pd_11_en2 = pd.read_csv('11Е2.csv', ';', index_col=0)
+pd_10_ec1 = pd.read_csv('10Э1.csv', ';', index_col=0)
+pd_10_ec2 = pd.read_csv('10Э2.csv', ';', index_col=0)
+pd_10_en1 = pd.read_csv('10Е1 .csv', ';', index_col=0)
+pd_10_en2 = pd.read_csv('10Е2.csv', ';', index_col=0)
+
+
 def buttons_call(call, bot):
     if call.data == "key_10":
         keyboard10 = types.InlineKeyboardMarkup()
@@ -34,11 +49,6 @@ def buttons_call(call, bot):
         key_10MI2gr = types.InlineKeyboardButton(text='2', callback_data='key_10MI2gr')
         keyboard11.add(key_10MI2gr)
 
-        key_10MI3gr = types.InlineKeyboardButton(text='3', callback_data='key_10MI3gr')
-        keyboard11.add(key_10MI3gr)
-
-        key_10MI4gr = types.InlineKeyboardButton(text='4', callback_data='key_10MI4gr')
-        keyboard11.add(key_10MI4gr)
 
         bot.send_message(call.message.chat.id, "Выбери группу", reply_markup=keyboard11)
     elif call.data == "key_10ME":
@@ -48,15 +58,6 @@ def buttons_call(call, bot):
 
         key_10ME2gr = types.InlineKeyboardButton(text='2', callback_data='key_10ME2gr')
         keyboard11.add(key_10ME2gr)
-
-        key_10ME3gr = types.InlineKeyboardButton(text='3', callback_data='key_10ME3gr')
-        keyboard11.add(key_10ME3gr)
-
-        key_10ME4gr = types.InlineKeyboardButton(text='4', callback_data='key_10ME4gr')
-        keyboard11.add(key_10ME4gr)
-
-        key_10ME5gr = types.InlineKeyboardButton(text='5', callback_data='key_10ME5gr')
-        keyboard11.add(key_10ME5gr)
 
         bot.send_message(call.message.chat.id, "Выбери группу", reply_markup=keyboard11)
     elif call.data == "key_10EN":
@@ -76,12 +77,6 @@ def buttons_call(call, bot):
         key_11MI2gr = types.InlineKeyboardButton(text='2', callback_data='key_11MI2gr')
         keyboard11.add(key_11MI2gr)
 
-        key_11MI3gr = types.InlineKeyboardButton(text='3', callback_data='key_11MI3gr')
-        keyboard11.add(key_11MI3gr)
-
-        key_11MI4gr = types.InlineKeyboardButton(text='4', callback_data='key_11MI4gr')
-        keyboard11.add(key_11MI4gr)
-
         bot.send_message(call.message.chat.id, "Выбери группу", reply_markup=keyboard11)
     elif call.data == "key_11ME":
         keyboard11 = types.InlineKeyboardMarkup()
@@ -90,15 +85,6 @@ def buttons_call(call, bot):
 
         key_11ME2gr = types.InlineKeyboardButton(text='2', callback_data='key_11ME2gr')
         keyboard11.add(key_11ME2gr)
-
-        key_11ME3gr = types.InlineKeyboardButton(text='3', callback_data='key_11ME3gr')
-        keyboard11.add(key_11ME3gr)
-
-        key_11ME4gr = types.InlineKeyboardButton(text='4', callback_data='key_11ME4gr')
-        keyboard11.add(key_11ME4gr)
-
-        key_11ME5gr = types.InlineKeyboardButton(text='5', callback_data='key_11ME5gr')
-        keyboard11.add(key_11ME5gr)
 
         bot.send_message(call.message.chat.id, "Выбери направление", reply_markup=keyboard11)
     elif call.data == "key_11EN":
@@ -154,48 +140,7 @@ def buttons_call(call, bot):
         keyboard10d.add(key_10MI2grSat)
 
         bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard10d)
-    elif call.data == "key_10MI3gr":
-        keyboard10d = types.InlineKeyboardMarkup()
-        key_10MI3grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_10MI3grMon')
-        keyboard10d.add(key_10MI3grMon)
 
-        key_10MI3grTue = types.InlineKeyboardButton(text='Вторник', callback_data='key_10MI3grTue')
-        keyboard10d.add(key_10MI3grTue)
-
-        key_10MI3grWed = types.InlineKeyboardButton(text='Среда', callback_data='key_10MI3grWed')
-        keyboard10d.add(key_10MI3grWed)
-
-        key_10MI3grThu = types.InlineKeyboardButton(text='Четверг', callback_data='key_10MI3grThu')
-        keyboard10d.add(key_10MI3grThu)
-
-        key_10MI3grFri = types.InlineKeyboardButton(text='Пятница', callback_data='key_10MI3grFri')
-        keyboard10d.add(key_10MI3grFri)
-
-        key_10MI3grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_10MI3grSat')
-        keyboard10d.add(key_10MI3grSat)
-
-        bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard10d)
-    elif call.data == "key_10MI4gr":
-        keyboard10d = types.InlineKeyboardMarkup()
-        key_10MI4grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_10MI4grMon')
-        keyboard10d.add(key_10MI4grMon)
-
-        key_10MI4grTue = types.InlineKeyboardButton(text='Вторник', callback_data='key_10MI4grTue')
-        keyboard10d.add(key_10MI4grTue)
-
-        key_10MI4grWed = types.InlineKeyboardButton(text='Среда', callback_data='key_10MI4grWed')
-        keyboard10d.add(key_10MI4grWed)
-
-        key_10MI4grThu = types.InlineKeyboardButton(text='Четверг', callback_data='key_10MI4grThu')
-        keyboard10d.add(key_10MI4grThu)
-
-        key_10MI4grFri = types.InlineKeyboardButton(text='Пятница', callback_data='key_10MI4grFri')
-        keyboard10d.add(key_10MI4grFri)
-
-        key_10MI4grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_10MI4grSat')
-        keyboard10d.add(key_10MI4grSat)
-
-        bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard10d)
     elif call.data == "key_10ME1gr":
         keyboard10d = types.InlineKeyboardMarkup()
         key_10ME1grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_10ME1grMon')
@@ -238,69 +183,7 @@ def buttons_call(call, bot):
         keyboard10d.add(key_10ME2grSat)
 
         bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard10d)
-    elif call.data == "key_10ME3gr":
-        keyboard10d = types.InlineKeyboardMarkup()
-        key_10ME3grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_10ME3grMon')
-        keyboard10d.add(key_10ME3grMon)
 
-        key_10ME3grTue = types.InlineKeyboardButton(text='Вторник', callback_data='key_10ME3grTue')
-        keyboard10d.add(key_10ME3grTue)
-
-        key_10ME3grWed = types.InlineKeyboardButton(text='Среда', callback_data='key_10ME3grWed')
-        keyboard10d.add(key_10ME3grWed)
-
-        key_10ME3grThu = types.InlineKeyboardButton(text='Четверг', callback_data='key_10ME3grThu')
-        keyboard10d.add(key_10ME3grThu)
-
-        key_10ME3grFri = types.InlineKeyboardButton(text='Пятница', callback_data='key_10ME3grFri')
-        keyboard10d.add(key_10ME3grFri)
-
-        key_10ME3grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_10ME3grSat')
-        keyboard10d.add(key_10ME3grSat)
-
-        bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard10d)
-    elif call.data == "key_10ME4gr":
-        keyboard10d = types.InlineKeyboardMarkup()
-        key_10ME4grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_10ME4grMon')
-        keyboard10d.add(key_10ME4grMon)
-
-        key_10ME4grTue = types.InlineKeyboardButton(text='Вторник', callback_data='key_10ME4grTue')
-        keyboard10d.add(key_10ME4grTue)
-
-        key_10ME4grWed = types.InlineKeyboardButton(text='Среда', callback_data='key_10ME4grWed')
-        keyboard10d.add(key_10ME4grWed)
-
-        key_10ME4grThu = types.InlineKeyboardButton(text='Четверг', callback_data='key_10ME4grThu')
-        keyboard10d.add(key_10ME4grThu)
-
-        key_10ME4grFri = types.InlineKeyboardButton(text='Пятница', callback_data='key_10ME4grFri')
-        keyboard10d.add(key_10ME4grFri)
-
-        key_10ME4grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_10ME4grSat')
-        keyboard10d.add(key_10ME4grSat)
-
-        bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard10d)
-    elif call.data == "key_10ME5gr":
-        keyboard10d = types.InlineKeyboardMarkup()
-        key_10ME5grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_10ME5grMon')
-        keyboard10d.add(key_10ME5grMon)
-
-        key_10ME5grTue = types.InlineKeyboardButton(text='Вторник', callback_data='key_10ME5grTue')
-        keyboard10d.add(key_10ME5grTue)
-
-        key_10ME5grWed = types.InlineKeyboardButton(text='Среда', callback_data='key_10ME5grWed')
-        keyboard10d.add(key_10ME5grWed)
-
-        key_10ME5grThu = types.InlineKeyboardButton(text='Четверг', callback_data='key_10ME5grThu')
-        keyboard10d.add(key_10ME5grThu)
-
-        key_10ME5grFri = types.InlineKeyboardButton(text='Пятница', callback_data='key_10ME5grFri')
-        keyboard10d.add(key_10ME5grFri)
-
-        key_10ME5grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_10ME5grSat')
-        keyboard10d.add(key_10ME5grSat)
-
-        bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard10d)
     elif call.data == "key_10EN1gr":
         keyboard10d = types.InlineKeyboardMarkup()
         key_10EN1grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_10EN1grMon')
@@ -322,6 +205,7 @@ def buttons_call(call, bot):
         keyboard10d.add(key_10EN1grSat)
 
         bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard10d)
+
     elif call.data == "key_10EN2gr":
         keyboard10d = types.InlineKeyboardMarkup()
         key_10EN2grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_10EN2grMon')
@@ -383,153 +267,6 @@ def buttons_call(call, bot):
 
         key_11MI2grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_11MI2grSat')
         keyboard11d.add(key_11MI2grSat)
-
-        bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard11d)
-    elif call.data == "key_11MI3gr":
-        keyboard11d = types.InlineKeyboardMarkup()
-        key_10MI3grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_10MI3grMon')
-        keyboard11d.add(key_10MI3grMon)
-
-        key_10MI3grTue = types.InlineKeyboardButton(text='Вторник', callback_data='key_10MI3grTue')
-        keyboard11d.add(key_10MI3grTue)
-
-        key_10MI3grWed = types.InlineKeyboardButton(text='Среда', callback_data='key_10MI3grWed')
-        keyboard11d.add(key_10MI3grWed)
-
-        key_10MI3grThu = types.InlineKeyboardButton(text='Четверг', callback_data='key_10MI3grThu')
-        keyboard11d.add(key_10MI3grThu)
-
-        key_10MI3grFri = types.InlineKeyboardButton(text='Пятница', callback_data='key_10MI3grFri')
-        keyboard11d.add(key_10MI3grFri)
-
-        key_10MI3grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_10MI3grSat')
-        keyboard11d.add(key_10MI3grSat)
-
-        bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard11d)
-    elif call.data == "key_11MI4gr":
-        keyboard11d = types.InlineKeyboardMarkup()
-        key_11MI4grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_11MI4grMon')
-        keyboard11d.add(key_11MI4grMon)
-
-        key_11MI4grTue = types.InlineKeyboardButton(text='Вторник', callback_data='key_11MI4grTue')
-        keyboard11d.add(key_11MI4grTue)
-
-        key_11MI4grWed = types.InlineKeyboardButton(text='Среда', callback_data='key_11MI4grWed')
-        keyboard11d.add(key_11MI4grWed)
-
-        key_11MI4grThu = types.InlineKeyboardButton(text='Четверг', callback_data='key_11MI4grThu')
-        keyboard11d.add(key_11MI4grThu)
-
-        key_11MI4grFri = types.InlineKeyboardButton(text='Пятница', callback_data='key_11MI4grFri')
-        keyboard11d.add(key_11MI4grFri)
-
-        key_11MI4grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_11MI4grSat')
-        keyboard11d.add(key_11MI4grSat)
-
-        bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard11d)
-    elif call.data == "key_11ME1gr":
-        keyboard11d = types.InlineKeyboardMarkup()
-        key_11ME1grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_11ME1grMon')
-        keyboard11d.add(key_11ME1grMon)
-
-        key_11ME1grTue = types.InlineKeyboardButton(text='Вторник', callback_data='key_11ME1grTue')
-        keyboard11d.add(key_11ME1grTue)
-
-        key_11ME1grWed = types.InlineKeyboardButton(text='Среда', callback_data='key_11ME1grWed')
-        keyboard11d.add(key_11ME1grWed)
-
-        key_11ME1grThu = types.InlineKeyboardButton(text='Четверг', callback_data='key_11ME1grThu')
-        keyboard11d.add(key_11ME1grThu)
-
-        key_11ME1grFri = types.InlineKeyboardButton(text='Пятница', callback_data='key_11ME1grFri')
-        keyboard11d.add(key_11ME1grFri)
-
-        key_11ME1grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_11ME1grSat')
-        keyboard11d.add(key_11ME1grSat)
-
-        bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard11d)
-    elif call.data == "key_11ME2gr":
-        keyboard11d = types.InlineKeyboardMarkup()
-        key_11ME2grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_11ME2grMon')
-        keyboard11d.add(key_11ME2grMon)
-
-        key_11ME2grTue = types.InlineKeyboardButton(text='Вторник', callback_data='key_11ME2grTue')
-        keyboard11d.add(key_11ME2grTue)
-
-        key_11ME2grWed = types.InlineKeyboardButton(text='Среда', callback_data='key_11ME2grWed')
-        keyboard11d.add(key_11ME2grWed)
-
-        key_11ME2grThu = types.InlineKeyboardButton(text='Четверг', callback_data='key_11ME2grThu')
-        keyboard11d.add(key_11ME2grThu)
-
-        key_11ME2grFri = types.InlineKeyboardButton(text='Пятница', callback_data='key_11ME2grFri')
-        keyboard11d.add(key_11ME2grFri)
-
-        key_11ME2grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_11ME2grSat')
-        keyboard11d.add(key_11ME2grSat)
-
-        bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard11d)
-    elif call.data == "key_11ME3gr":
-        keyboard11d = types.InlineKeyboardMarkup()
-        key_11ME3grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_11ME3grMon')
-        keyboard11d.add(key_11ME3grMon)
-
-        key_11ME3grTue = types.InlineKeyboardButton(text='Вторник', callback_data='key_11ME3grTue')
-        keyboard11d.add(key_11ME3grTue)
-
-        key_11ME3grWed = types.InlineKeyboardButton(text='Среда', callback_data='key_11ME3grWed')
-        keyboard11d.add(key_11ME3grWed)
-
-        key_11ME3grThu = types.InlineKeyboardButton(text='Четверг', callback_data='key_11ME3grThu')
-        keyboard11d.add(key_11ME3grThu)
-
-        key_11ME3grFri = types.InlineKeyboardButton(text='Пятница', callback_data='key_11ME3grFri')
-        keyboard11d.add(key_11ME3grFri)
-
-        key_11ME3grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_11ME3grSat')
-        keyboard11d.add(key_11ME3grSat)
-
-        bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard11d)
-    elif call.data == "key_11ME4gr":
-        keyboard11d = types.InlineKeyboardMarkup()
-        key_11ME4grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_11ME4grMon')
-        keyboard11d.add(key_11ME4grMon)
-
-        key_11ME4grTue = types.InlineKeyboardButton(text='Вторник', callback_data='key_11ME4grTue')
-        keyboard11d.add(key_11ME4grTue)
-
-        key_11ME4grWed = types.InlineKeyboardButton(text='Среда', callback_data='key_11ME4grWed')
-        keyboard11d.add(key_11ME4grWed)
-
-        key_11ME4grThu = types.InlineKeyboardButton(text='Четверг', callback_data='key_11ME4grThu')
-        keyboard11d.add(key_11ME4grThu)
-
-        key_11ME4grFri = types.InlineKeyboardButton(text='Пятница', callback_data='key_11ME4grFri')
-        keyboard11d.add(key_11ME4grFri)
-
-        key_11ME4grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_11ME4grSat')
-        keyboard11d.add(key_11ME4grSat)
-
-        bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard11d)
-    elif call.data == "key_11ME5gr":
-        keyboard11d = types.InlineKeyboardMarkup()
-        key_11ME5grMon = types.InlineKeyboardButton(text='Понедельник', callback_data='key_11ME5grMon')
-        keyboard11d.add(key_11ME5grMon)
-
-        key_11ME5grTue = types.InlineKeyboardButton(text='Вторник', callback_data='key_11ME5grTue')
-        keyboard11d.add(key_11ME5grTue)
-
-        key_11ME5grWed = types.InlineKeyboardButton(text='Среда', callback_data='key_11ME5grWed')
-        keyboard11d.add(key_11ME5grWed)
-
-        key_11ME5grThu = types.InlineKeyboardButton(text='Четверг', callback_data='key_11ME5grThu')
-        keyboard11d.add(key_11ME5grThu)
-
-        key_11ME5grFri = types.InlineKeyboardButton(text='Пятница', callback_data='key_11ME5grFri')
-        keyboard11d.add(key_11ME5grFri)
-
-        key_11ME5grSat = types.InlineKeyboardButton(text='Суббота', callback_data='key_11ME5grSat')
-        keyboard11d.add(key_11ME5grSat)
 
         bot.send_message(call.message.chat.id, "Выбери день недели", reply_markup=keyboard11d)
     elif call.data == "key_11EN1gr":
@@ -2354,6 +2091,12 @@ def buttons_call(call, bot):
         audio = open(r'Java Is What Java Does.mp3', 'rb')
         bot.send_audio(call.message.chat.id, audio)
         audio.close()
+    elif call.data == "key_start":
+        keyboard = types.InlineKeyboardMarkup()
+        key_10 = types.InlineKeyboardButton(text='10', callback_data='key_10')
+        keyboard.add(key_10)
 
-with open("database.json") as database_file:
-    data = database_file.read()
+        key_11 = types.InlineKeyboardButton(text='11', callback_data='key_11')
+        keyboard.add(key_11)
+
+        bot.send_message(call.message.chat.id, "Выбери класс", reply_markup=keyboard)

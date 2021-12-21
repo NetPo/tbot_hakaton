@@ -8,8 +8,13 @@ from telebot import types
 global answer
 @bot.message_handler(content_types=['text'])
 def get_text_messages(message):
+    if message.text == "/start":
+        keyboard = types.InlineKeyboardMarkup()
+        key_start = types.InlineKeyboardButton(text='Узнать расписание', callback_data='key_start')
+        keyboard.add(key_start)
 
-    if message.text == "/help":
+        bot.send_message(message.from_user.id, 'Привет. Я Тайм-тян! Я помогу тебе узнать или вспомнить своё расписание, ~нян. \n \n Нажми на кнопку, чтобы узнать расписание, ~нян', reply_markup=keyboard)
+    elif message.text == "/help":
         bot.send_message(message.from_user.id, "Напиши 'Привет'")
     elif message.text == "Привет":
         keyboard = types.InlineKeyboardMarkup()

@@ -28,8 +28,6 @@ def get_text_messages(message):
         keyboard.add(key_2)
         key_3 = types.InlineKeyboardButton(text='Третий создатель любит Java', callback_data='key_secr3')
         keyboard.add(key_3)
-        key_4 = types.InlineKeyboardButton(text='Поменять имя на Кошкодевочка-фута-лоли', callback_data='key_secr4')
-        keyboard.add(key_4)
 
         bot.send_message(message.from_user.id, "Привет от разработчиков!", reply_markup=keyboard)
     else:

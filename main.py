@@ -24,7 +24,7 @@ def get_text_messages(message):
         key_11 = types.InlineKeyboardButton(text='11', callback_data='key_11')
         keyboard.add(key_11)
 
-        bot.send_message(message.from_user.id, "Привет! Выбери класс", reply_markup=keyboard)
+        bot.send_message(message.from_user.id, "Привет! Выбери свой класс", reply_markup=keyboard)
     elif message.text == "Secret command":
         keyboard = types.InlineKeyboardMarkup()
         key_1 = types.InlineKeyboardButton(text='Первый создатель любит "Евангелион"', callback_data='key_secr1')
@@ -36,7 +36,7 @@ def get_text_messages(message):
 
         bot.send_message(message.from_user.id, "Привет от разработчиков!", reply_markup=keyboard)
     else:
-        bot.send_message(message.from_user.id, "Я тебя не понимаю. Напиши /help, чтобы узнать мои команды")
+        bot.send_message(message.from_user.id, "Я тебя не понимаю, ~нян. Напиши /help, чтобы узнать мои возможности")
 
 @bot.callback_query_handler(func=lambda call: True)
 def callback_worker(call):
